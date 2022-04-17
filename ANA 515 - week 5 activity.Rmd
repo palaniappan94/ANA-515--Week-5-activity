@@ -1,0 +1,28 @@
+---
+title: "Vizualization Activity"
+author: "Palaniappan Perichiappan"
+date: '2022-04-17'
+output: html_document
+---
+
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(knitr)
+library(dplyr)
+library(ggplot2)
+
+url <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/airline-safety/airline-safety.csv"
+airlinesafety <- read.csv(url)
+View(airlinesafety)
+
+ggplot(data = airlinesafety) + geom_point(mapping = aes(x = fatal_accidents_00_14, y = airline))
+
+ggplot(data = airlinesafety, aes(x = fatal_accidents_85_99, y = airline))+ geom_point()+ labs( x= "Fatal Accidents 85 to 99", y= "Airlines", title = "Airline Safety")
+
+##viewing in histogram
+ggplot(data = airlinesafety) + geom_histogram(mapping = aes(x = fatal_accidents_85_99,bandwidth  = 5)) + labs( x= "Fatal Accidents", y= "Count", title = "Fatal Accidents between 85 to 99")
+```
+
+
+
